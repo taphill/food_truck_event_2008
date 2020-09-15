@@ -35,6 +35,14 @@ class Event
     inventory
   end
 
+  def overstocked_items
+    total_inventory.map do |item, data|
+      next unless data[:quantity] > 50 && data[:food_trucks].length > 1
+
+      item
+    end.compact
+  end
+
   private
 
   def initialize_inventory_hash

@@ -43,6 +43,15 @@ class Event
     end.compact
   end
 
+  def sorted_item_list
+    item_list = []
+    initialize_inventory_hash.each do |item, data|
+      item_list << item.name
+    end
+
+    item_list.sort
+  end
+
   private
 
   def initialize_inventory_hash

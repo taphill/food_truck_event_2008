@@ -13,4 +13,12 @@ class Event
   def food_truck_names
     food_trucks.map(&:name)
   end
+
+  def food_trucks_that_sell(item)
+    food_trucks.map do |truck|
+      next unless truck.inventory.keys.include?(item)
+
+      truck
+    end.compact
+  end
 end
